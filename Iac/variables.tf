@@ -6,7 +6,7 @@ variable "docker_host" {
 
 variable "network_name" {
   description = "Name of the Docker network"
-  default     = "line_network"
+  default     = "terraform_network"
 }
 
 variable "mssql_container_name" {
@@ -14,9 +14,9 @@ variable "mssql_container_name" {
   default     = "mssql_container"
 }
 
-variable "line_ten_container_name" {
-  description = "Name of the LineTen API container"
-  default     = "line_ten_api_container"
+variable "container_name" {
+  description = "Name of the API container"
+  default     = "api_container"
 }
 
 variable "db_volume_name" {

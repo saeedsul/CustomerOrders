@@ -59,14 +59,14 @@ resource "docker_container" "mssql_container" {
   network_mode = var.network_name
 }
 
-resource "docker_image" "line_ten_api_image" {
-  name         = "lineten:10"
+resource "docker_image" "api_image" {
+  name         = "api:10"
   keep_locally = true
 }
 
-resource "docker_container" "line_ten_api_container" {
-  name  = "line_ten_api_container"
-  image = docker_image.line_ten_api_image.name
+resource "docker_container" "api_container" {
+  name  = "api_container"
+  image = docker_image.api_image.name
   ports {
     internal = 80
     external = 3000

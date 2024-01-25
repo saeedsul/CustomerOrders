@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+
+  SqlServerDb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: db_container
+    ports:
+      - 8002:1433 
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=myStong_Password123# 
+    volumes:
+      - dbdata:/var/opt/mssql 
+
+  api:
+    image: ${DOCKER_REGISTRY-}api
+    container_name: api_container
+    build:
+      context: .
+      dockerfile: Api/Dockerfile
+    ports:
+      - "8001:80"  
+    depends_on:
+      - SqlServerDb
+    environment:
+      ConnectionStrings__dbConnectionString: "Server=SqlServerDb;Database=CustomerOrderDb;User Id=SA;Password=myStong_Password123#;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False"
+
+volumes:
+  dbdata:

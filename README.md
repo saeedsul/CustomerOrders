@@ -15,10 +15,10 @@
 1. change the launch profile to docker-compose in visual studio or via command line docker-compose up in the same directory where the compose file is.
 
 2. once you run docker-compose it will create two containers
-   2.1 lineten_db_container
-   2.2 lineten_api_container
+   2.1 db_container
+   2.2 api_container
 
-3. lineten_api_container is dependent on lineten_db_container because it uses the Service name (SqlServerDb) to be able to connect to the database.
+3. api_container is dependent on db_container because it uses the Service name (SqlServerDb) to be able to connect to the database.
 
 #==============================================================================================================
 
@@ -35,8 +35,8 @@ All api endpoints are RESTFUL it can be called from swagger.
 
 1. locate Dockerfile in root folder.
 2. use powershell or any other command window
-3. we need to build api image first and should be named as lineten:10 .
-4. navigate to the root folder and type: docker build -t lineten:10 .
+3. we need to build api image first and should be named as api:10 .
+4. navigate to the root folder and type: docker build -t api:10 .
 
 # After image is created open terminal and navigate to Iac folder.
 
